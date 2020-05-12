@@ -16,7 +16,7 @@ exports.signin = (req, res)=>{
         return res.status(401).send("Invalid password");
       }
       const token = jwt.sign({ id: user.id }, config.parsed.SECRET, {
-        expiresIn: 7*86400 // 24 hours
+        expiresIn: 7*86400 // 7 days
       });
       res.json({success:true, data:{"accessToken":token}});
     }else{
@@ -42,7 +42,7 @@ exports.verifyToken = (req, res, next) => {
         message: "Unauthorized!"
       });
     }
-    req.userId = decoded.id;
+    req.body.userId = decoded.id;
     next();
   });
 };

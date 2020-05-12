@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 var routes = require('./src/routes/route');
 const sequelize = require('./src/sources/sequelize');
 routes.forEach((route, index)=>{
-    app.use(`/${route.name}`,require(`./src/routes/${route.name}`));
+    app.use(`/${route.path}`,require(`./src/routes/${route.name}`));
 });
 //
 const port = config.parsed.APP_PORT || 3000;

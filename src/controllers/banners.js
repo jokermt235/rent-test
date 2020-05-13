@@ -1,5 +1,19 @@
 const sequel = require('../sources/sequelize');
 const Banners = sequel.import('../models/banners');
+const multer = require('multer');
+const Storage = multer.diskStorage({
+     destination: function(req, file, callback) {
+       callback(null, "./public/banners/images");
+     },
+     filename: function(req, file, callback) {
+       let fileName = file.fieldname + "_" + Date.now() + "_" + file.originalname;
+       callback(null, fileName);
+       req.image = fileName;
+     }
+ });
+ const upload = multer({
+     storage: Storage
+ }).array("images", 1);
 Banners.sync();
 exports.index = (req, res)=>{
   Banners.findAll().then(banners=> {
@@ -16,6 +30,15 @@ exports.create = (req, res)=>{
     res.status(400).send(error);
   });
 };
+
+exports.upload = (req, res)=>{
+  upload(req, res, function(err) {
+      if (err) {
+        return res.end("Something went wrong!");
+      }
+      return res.end(req.image);
+  });
+}
 
 exports.view = (req, res)=>{
   let bannerId = req.params.id;

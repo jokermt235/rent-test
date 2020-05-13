@@ -1,5 +1,6 @@
 const sequel = require('../sources/sequelize');
 const News = sequel.import('../models/news');
+const Users = sequel.import('../models/users');
 News.sync();
 exports.index = (req, res)=>{
   News.findAll().then(news=> {

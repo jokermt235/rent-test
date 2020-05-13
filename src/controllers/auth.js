@@ -43,6 +43,11 @@ exports.verifyToken = (req, res, next) => {
       });
     }
     req.body.userId = decoded.id;
-    next();
+    Users.findOne({
+         where: { id: decoded.id }
+    }).then(user=>{
+      req.body.user = user;
+      next();
+    });
   });
 };

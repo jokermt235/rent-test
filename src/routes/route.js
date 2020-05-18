@@ -17,6 +17,10 @@ routes = [{
   {
     "path": "api/v1/users",
     "name": "users"
+  },
+  {
+    "path": "api/v1/contacts",
+    "name": "contacts"
   }
 ];
 module.exports = routes;

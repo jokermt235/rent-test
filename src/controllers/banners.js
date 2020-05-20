@@ -17,7 +17,7 @@ const Storage = multer.diskStorage({
 Banners.sync();
 exports.index = (req, res)=>{
   Banners.findAll().then(banners=> {
-    res.json({"success":true,"data":banners});
+    res.json(banners);
   }).catch(error=>{
     res.status(400).send(error);
   });

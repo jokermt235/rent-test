@@ -78,8 +78,8 @@ exports.update = (req, res)=>{
 exports.delete = (req, res)=>{
   Banners.destroy({
      where:{id: req.params.id}
-  }).then(deteled=>{
-    /*if(deleted){
+  }).then(deleted=>{
+    if(deleted){
         if(req.params.image){
             try{
                 let src = LOCATION + "/" + req.params.image;
@@ -88,7 +88,7 @@ exports.delete = (req, res)=>{
                 console.log(err);
             }
         }
-    }*/
+    }
     res.json({success:true, data:true});
   }).catch(error=>{
       res.status(400).send(error);

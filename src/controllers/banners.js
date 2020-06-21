@@ -1,9 +1,11 @@
 const sequel = require('../sources/sequelize');
 const Banners = sequel.import('../models/banners');
 const multer = require('multer');
+const fs = require('fs');
+const LOCATION  = "/var/www/html/banners/images";
 const Storage = multer.diskStorage({
      destination: function(req, file, callback) {
-       callback(null, "./public/banners/images");
+       callback(null, LOCATION);
      },
      filename: function(req, file, callback) {
        let fileName = file.fieldname + "_" + Date.now() + "_" + file.originalname;
@@ -70,5 +72,25 @@ exports.update = (req, res)=>{
     }
   }).catch(error=>{
     res.status(400).send(error);
+  });
+};
+
+exports.delete = (req, res)=>{
+  Banners.destroy({
+     where:{id: req.params.id}
+  }).then(deteled=>{
+    /*if(deleted){
+        if(req.params.image){
+            try{
+                let src = LOCATION + "/" + req.params.image;
+                fs.unlinkSync(src);
+            }catch(err){
+                console.log(err);
+            }
+        }
+    }*/
+    res.json({success:true, data:true});
+  }).catch(error=>{
+      res.status(400).send(error);
   });
 };

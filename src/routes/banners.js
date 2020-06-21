@@ -7,4 +7,5 @@ route.get('/:id',banners.view);
 route.post('/', auth.verifyToken,banners.create);
 route.put('/:id',auth.verifyToken,banners.update);
 route.post('/upload', auth.verifyToken,banners.upload);
+route.delete('/:id/:image', auth.verifyToken,banners.delete);
 module.exports = route;

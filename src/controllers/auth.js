@@ -51,3 +51,9 @@ exports.verifyToken = (req, res, next) => {
     });
   });
 };
+
+exports.tokenOK = (req, res)=>{
+    return res.status(200).send({
+        "success":true
+    });
+};

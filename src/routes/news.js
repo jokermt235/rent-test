@@ -6,4 +6,6 @@ route.get('/',news.index);
 route.get('/:id',news.view);
 route.post('/', auth.verifyToken,news.create);
 route.put('/:id',auth.verifyToken,news.update);
+route.post('/upload', auth.verifyToken,news.upload);
+route.delete('/:id/:image', auth.verifyToken,news.delete);
 module.exports = route;

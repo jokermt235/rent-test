@@ -2,7 +2,7 @@ const sequel = require('../sources/sequelize');
 const Banners = sequel.import('../models/banners');
 const multer = require('multer');
 const fs = require('fs');
-const LOCATION  = "/var/www/html/banners/images";
+const LOCATION  = "/var/www/html/images/banners/";
 const Storage = multer.diskStorage({
      destination: function(req, file, callback) {
        callback(null, LOCATION);

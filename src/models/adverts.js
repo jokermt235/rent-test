@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes)=>{
-  return sequelize.define('News', {
+  return sequelize.define('Adverts', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -13,11 +13,6 @@ module.exports = (sequelize, DataTypes)=>{
     desc: {
       type: DataTypes.TEXT,
       allowNull: false,
-      unique: false
-    },
-    image: {
-      type: DataTypes.TEXT,
-      allowNull: true,
       unique: false
     }
   })

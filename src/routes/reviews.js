@@ -5,5 +5,6 @@ const route = express.Router();
 route.get('/',reviews.index);
 route.get('/:id',reviews.view);
 route.post('/', auth.verifyToken,reviews.create);
+route.post('/upload', auth.verifyToken,reviews.upload);
 route.put('/:id',auth.verifyToken,reviews.update);
 module.exports = route;

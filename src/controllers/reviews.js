@@ -1,9 +1,11 @@
 const sequel = require('../sources/sequelize');
 const Reviews = sequel.import('../models/reviews');
+const Uploader = require('../sources/uploader');
+Uploader.setLocation("reviews");
 Reviews.sync();
 exports.index = (req, res)=>{
   Reviews.findAll().then(reviews=> {
-    res.json({"success":true,"data":reviews});
+    res.json(reviews);
   }).catch(error=>{
     res.status(400).send(error);
   });
@@ -11,7 +13,7 @@ exports.index = (req, res)=>{
 
 exports.create = (req, res)=>{
   Reviews.create(req.body).then(review=>{
-    res.json({success:true, data:review});
+    res.json(review);
   }).catch(error=>{
     res.status(400).send(error);
   });
@@ -23,7 +25,7 @@ exports.view = (req, res)=>{
        where: { id: reviewId }
   }).then(review=>{
     if(review){
-      res.json({success:true, data:review});
+      res.json(review);
     }else{
       res.status(404).send({success:false, message:"Not found"});
     }
@@ -38,7 +40,7 @@ exports.update = (req, res)=>{
   }).then(review=>{
     if(review){
       review.update(req.body).then(review=>{
-        res.json({success:true, data:review});
+        res.json(revie);
       }).catch(error=>{
         res.status(400).send(error);
       });
@@ -49,3 +51,7 @@ exports.update = (req, res)=>{
     res.status(400).send(error);
   });
 };
+
+exports.upload = (req, res)=>{
+    Uploader.upload(req, res);
+}

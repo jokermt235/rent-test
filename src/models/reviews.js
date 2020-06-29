@@ -17,6 +17,20 @@ module.exports = (sequelize, DataTypes)=>{
     show: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
+    },
+    image:{
+        type: DataTypes.TEXT,
+        unique: false
+    },
+    username:{
+        type: DataTypes.TEXT,
+        unique: false,
+        allowNull:false
+    },
+    userType:{
+        type: DataTypes.TEXT,
+        unique: false,
+        allowNull:false
     }
   })
 }

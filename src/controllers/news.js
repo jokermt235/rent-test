@@ -40,7 +40,6 @@ exports.view = (req, res)=>{
 
 exports.upload = (req, res)=>{
     Uploader.setLocation("news");
-    Uploader.testLocation();
     Uploader.upload(req, res);
 }
 

@@ -53,5 +53,6 @@ exports.update = (req, res)=>{
 };
 
 exports.upload = (req, res)=>{
+    Uploader.setLocation("reviews");
     Uploader.upload(req, res);
 }

@@ -2,7 +2,6 @@ const sequel = require('../sources/sequelize');
 const News = sequel.import('../models/news');
 const Users = sequel.import('../models/users');
 const Uploader = require('../sources/uploader');
-Uploader.setLocation("news");
 News.sync();
 exports.index = (req, res)=>{
   News.findAll({
@@ -40,6 +39,8 @@ exports.view = (req, res)=>{
 };
 
 exports.upload = (req, res)=>{
+    Uploader.setLocation("news");
+    Uploader.testLocation();
     Uploader.upload(req, res);
 }
 
@@ -66,14 +67,7 @@ exports.delete = (req, res)=>{
      where:{id: req.params.id}
   }).then(deleted=>{
     if(deleted){
-        if(req.params.image){
-            try{
-                let src = LOCATION + "/" + req.params.image;
-                fs.unlinkSync(src);
-            }catch(err){
-                console.log(err);
-            }
-        }
+       Uploader.delete(req,res); 
     }
     res.json({success:true, data:true});
   }).catch(error=>{

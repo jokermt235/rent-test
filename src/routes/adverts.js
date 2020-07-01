@@ -6,5 +6,5 @@ route.get('/',adverts.index);
 route.get('/:id',adverts.view);
 route.post('/', auth.verifyToken,adverts.create);
 route.put('/:id',auth.verifyToken,adverts.update);
-route.delete('/:id/:image', auth.verifyToken,adverts.delete);
+route.delete('/:id', auth.verifyToken,adverts.delete);
 module.exports = route;

@@ -66,7 +66,8 @@ exports.delete = (req, res)=>{
      where:{id: req.params.id}
   }).then(deleted=>{
     if(deleted){
-       Uploader.delete(req,res); 
+        Uploader.setLocation("news");
+        Uploader.delete(req,res); 
     }
     res.json({success:true, data:true});
   }).catch(error=>{

@@ -56,3 +56,17 @@ exports.upload = (req, res)=>{
     Uploader.setLocation("reviews");
     Uploader.upload(req, res);
 }
+
+exports.delete = (req, res)=>{
+  Reviews.destroy({
+     where:{id: req.params.id}
+  }).then(deleted=>{
+    if(deleted){
+       Uploader.setLocation("reviews");
+       Uploader.delete(req,res);
+    }
+    res.json({success:true, data:true});
+  }).catch(error=>{
+      res.status(400).send(error);
+  });
+};

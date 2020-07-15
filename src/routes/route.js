@@ -30,5 +30,17 @@ routes = [{
     "path": "api/v1/messages",
     "name": "messages"
   },
+  {
+      "path" : "api/v1/history",
+      "name" : "history"
+  },
+  {
+      "path" : "api/v1/about",
+      "name" : "about"
+  },
+  {
+      "path" : "api/v1/photos",
+      "name" : "photos"
+  }
 ];
 module.exports = routes;

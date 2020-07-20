@@ -1,28 +1,29 @@
 module.exports = (sequelize, DataTypes)=>{
-  return sequelize.define('News', {
+  return sequelize.define('Links', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    title: {
+    titleRU: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
-    desc: {
+    titleKG: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    titleEN: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    link: {
       type: DataTypes.TEXT,
       allowNull: false,
       unique: false
-    },
-    image: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      unique: false
-    },
-    views: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
+    }
   })
 }

@@ -1,0 +1,11 @@
+const express = require('express');
+const sections = require('../controllers/sections');
+const auth = require('../controllers/auth');
+const route = express.Router();
+route.get('/',sections.index);
+route.get('/:id',sections.view);
+route.post('/', auth.verifyToken,sections.create);
+route.put('/:id',auth.verifyToken,sections.update);
+route.post('/upload', auth.verifyToken,sections.upload);
+route.delete('/:id/:image', auth.verifyToken,sections.delete);
+module.exports = route;

@@ -45,6 +45,14 @@ routes = [{
   {
       "path" : "api/v1/stats",
       "name" : "stats"
+  },
+  {
+      "path" : "api/v1/sections",
+      "name" : "sections"
+  },
+  {
+      "path" : "api/v1/links",
+      "name" : "links"
   }
 ];
 module.exports = routes;

@@ -53,6 +53,10 @@ routes = [{
   {
       "path" : "api/v1/links",
       "name" : "links"
-  }
+  },
+  {
+      "path" : "api/v1/centerCharter",
+      "name" : "centerCharter"
+  },
 ];
 module.exports = routes;

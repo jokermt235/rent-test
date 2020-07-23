@@ -8,4 +8,5 @@ route.post('/', auth.verifyToken,banners.create);
 route.put('/:id',auth.verifyToken,banners.update);
 route.post('/upload', auth.verifyToken,banners.upload);
 route.delete('/:id/:image', auth.verifyToken,banners.delete);
+route.delete('/:id', auth.verifyToken,banners.delete);
 module.exports = route;

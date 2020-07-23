@@ -8,4 +8,5 @@ route.post('/', auth.verifyToken,sections.create);
 route.put('/:id',auth.verifyToken,sections.update);
 route.post('/upload', auth.verifyToken,sections.upload);
 route.delete('/:id/:image', auth.verifyToken,sections.delete);
+route.delete('/:id', auth.verifyToken,sections.delete);
 module.exports = route;

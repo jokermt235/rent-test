@@ -9,7 +9,17 @@ module.exports = (sequelize, DataTypes)=>{
         type: DataTypes.INTEGER,
         allowNull:true
     },
-    desc: {
+    descRU: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        unique: false
+    },
+    descKG: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        unique: false
+    },
+    descEN: {
         type: DataTypes.TEXT,
         allowNull: false,
         unique: false

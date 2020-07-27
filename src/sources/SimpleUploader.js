@@ -33,7 +33,16 @@ exports.delete = (req, res)=>{
         }
     }
 }
-
+exports.deleteImage = (image)=>{
+    if(image){
+         try{
+            let src = this.LOCATION + "/" + image;
+            fs.unlinkSync(src);
+        }catch(err){
+             console.log(err);
+        }
+    }
+}
 exports.testLocation = ()=>{
     console.log(this.LOCATION);
 }

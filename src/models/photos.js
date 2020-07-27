@@ -5,9 +5,19 @@ module.exports = (sequelize, DataTypes)=>{
       autoIncrement: true,
       primaryKey: true
     },
-    title: {
+    titleRU: {
       type: DataTypes.STRING,
-     allowNull: false,
+      allowNull: false,
+      unique: true
+    },
+    titleKG: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    titleEN: {
+      type: DataTypes.STRING,
+      allowNull: false,
       unique: true
     },
     image: {

@@ -47,6 +47,14 @@ exports.testLocation = ()=>{
     console.log(this.LOCATION);
 }
 
+exports.write = (data,langs,callback)=>{
+    langs.forEach(element => {
+        if(data['desc' + element]){
+            fs.writeFile(this.LOCATION + "/" + element  + '.txt' , data['desc' + element], callback);
+        }
+    });
+}
+
 exports.setLocation = (path)=>{
     this.LOCATION = config.parsed.APP_BASE_TEXT_PATH  + path  + "/";
 }

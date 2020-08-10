@@ -54,10 +54,19 @@ exports.update = (req, res)=>{
   });
 };
 
+exports.upload = (req, res)=>{
+    Uploader.setLocation("links");
+    Uploader.upload(req, res);
+}
+
 exports.delete = (req, res)=>{
   Model.destroy({
      where:{id: req.params.id}
   }).then(deleted=>{
+    if(deleted){
+        Uploader.setLocation("links");
+        Uploader.delete(req,res);
+    }
     res.json({success:true, data:true});
   }).catch(error=>{
       res.status(400).send(error);

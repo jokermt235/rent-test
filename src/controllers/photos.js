@@ -4,14 +4,14 @@ const Users = sequel.import('../models/users');
 const Uploader = require('../sources/uploader');
 Photos.sync();
 exports.index = (req, res)=>{
-  let page = 1;
-  if(!req.params.page){
+  let page = 0;
+  if(req.params.page){
       page = req.params.page;
   }
   let _offset = page * 10; 
   Photos.findAll({
       limit:10,
-      offset : offset,
+      offset : _offset,
       order:[
         ["id","DESC"]
       ]

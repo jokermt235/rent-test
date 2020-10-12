@@ -4,15 +4,22 @@ const Users = sequel.import('../models/users');
 const Uploader = require('../sources/uploader');
 News.sync();
 exports.index = (req, res)=>{
-  News.findAll({
-      order:[
-        ["id","DESC"]
-      ]
-  }).then(news=> {  
-    res.json(news);
-  }).catch(error=>{
-    res.status(400).send(error);
-  });
+    let page = 0;
+    if(req.params.page){
+        page = req.params.page;
+    }
+    let _offset = page * 10;
+    News.findAll({
+        limit:10,
+        offset : _offset,
+        order:[
+            ["id","DESC"]
+        ]
+    }).then(news=> {  
+        res.json(news);
+    }).catch(error=>{
+        res.status(400).send(error);
+    });
 };
 
 exports.create = (req, res)=>{

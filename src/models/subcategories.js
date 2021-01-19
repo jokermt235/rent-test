@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes)=>{
-  return sequelize.define('Adverts', {
+  return sequelize.define('Subcategories', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -35,5 +35,19 @@ module.exports = (sequelize, DataTypes)=>{
       allowNull: false,
       unique: false
     },
+    categoryId: {
+        type: DataTypes.INTEGER,
+        allowNull:true
+    },
+    image: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      unique: false
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: false
+    }
   })
 }

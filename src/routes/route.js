@@ -1,6 +1,6 @@
 routes = [{
-    "path":"api/v1/news",
-    "name":"news"
+    "path":"api/v1/goods",
+    "name":"goods"
   },
   {
     "path": "api/v1/auth",
@@ -19,44 +19,16 @@ routes = [{
     "name": "users"
   },
   {
-    "path": "api/v1/contacts",
-    "name": "contacts"
+    "path": "api/v1/categories",
+    "name": "categories"
   },
   {
-    "path": "api/v1/adverts",
-    "name": "adverts"
+    "path": "api/v1/subcategories",
+    "name": "subcategories"
   },
   {
-    "path": "api/v1/messages",
-    "name": "messages"
-  },
-  {
-      "path" : "api/v1/history",
-      "name" : "history"
-  },
-  {
-      "path" : "api/v1/about",
-      "name" : "about"
-  },
-  {
-      "path" : "api/v1/photos",
-      "name" : "photos"
-  },
-  {
-      "path" : "api/v1/stats",
-      "name" : "stats"
-  },
-  {
-      "path" : "api/v1/sections",
-      "name" : "sections"
-  },
-  {
-      "path" : "api/v1/links",
-      "name" : "links"
-  },
-  {
-      "path" : "api/v1/centerCharter",
-      "name" : "centerCharter"
-  }
+    "path": "api/v1/carts",
+    "name": "carts"
+  } 
 ];
 module.exports = routes;

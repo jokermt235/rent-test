@@ -1,19 +1,22 @@
 module.exports = (sequelize, DataTypes)=>{
-  return sequelize.define('Sections', {
+  return sequelize.define('Carts', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    titleEN: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
     titleRU: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull:true
+    },
+    goodId: {
+        type: DataTypes.INTEGER,
+        allowNull:true
     },
     titleKG: {
       type: DataTypes.STRING,
@@ -25,11 +28,6 @@ module.exports = (sequelize, DataTypes)=>{
       allowNull: false,
       unique: true
     },
-    descEN: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      unique: false
-    },
     descRU: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -40,8 +38,18 @@ module.exports = (sequelize, DataTypes)=>{
       allowNull: false,
       unique: false
     },
+    descEN: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      unique: false
+    },
     image: {
       type: DataTypes.TEXT,
+      allowNull: true,
+      unique: false
+    },
+    url: {
+      type: DataTypes.STRING,
       allowNull: true,
       unique: false
     }

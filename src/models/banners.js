@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes)=>{
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
-    },
+    }, 
     titleKG: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -39,6 +39,15 @@ module.exports = (sequelize, DataTypes)=>{
       type: DataTypes.TEXT,
       allowNull: true,
       unique: false
-    }
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: false
+    },
+    goodId: {
+        type: DataTypes.INTEGER,
+        allowNull:true
+    },
   })
 }

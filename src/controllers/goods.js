@@ -1,42 +1,36 @@
 const sequel = require('../sources/sequelize');
-const Photos = sequel.import('../models/photos');
-const Users = sequel.import('../models/users');
+const Model = sequel.import('../models/goods');
 const Uploader = require('../sources/uploader');
-Photos.sync();
+Uploader.setLocation("goods");
+Model.sync();
 exports.index = (req, res)=>{
-  let page = 0;
-  if(req.params.page){
-      page = req.params.page;
-  }
-  let _offset = page * 10; 
-  Photos.findAll({
-      limit:10,
-      offset : _offset,
-      order:[
-        ["id","DESC"]
-      ]
-  }).then(photos=> {  
-    res.json(photos);
+  Model.findAll().then(data=> {
+    res.json(data);
   }).catch(error=>{
     res.status(400).send(error);
   });
 };
 
 exports.create = (req, res)=>{
-  Photos.create(req.body).then(photo=>{
-    res.json({success:true, data:photo});
+  Model.create(req.body).then(record=>{
+    res.json({success:true, data:record});
   }).catch(error=>{
     res.status(400).send(error);
   });
 };
 
+exports.upload = (req, res)=>{
+    Uploader.setLocation("reviews");
+    Uploader.upload(req, res);
+}
+
 exports.view = (req, res)=>{
-  let photoId = req.params.id;
-  Photos.findOne({
-       where: { id: photoId }
-  }).then(photo=>{
-    if(photo){
-      res.json({success:true, data:photo});
+  let itemId = req.params.id;
+  Model.findOne({
+       where: { id: itemId }
+  }).then(record=>{
+    if(banner){
+      res.json({success:true, data:record});
     }else{
       res.status(404).send({success:false, message:"Not found"});
     }
@@ -45,18 +39,13 @@ exports.view = (req, res)=>{
   });
 };
 
-exports.upload = (req, res)=>{
-    Uploader.setLocation("photos");
-    Uploader.upload(req, res);
-}
-
 exports.update = (req, res)=>{
-  Photos.findOne({
+  Model.findOne({
        where: { id: req.params.id }
-  }).then(photos=>{
-    if(photos){
-      photos.update(req.body).then(photo=>{
-        res.json({success:true, data:photo});
+  }).then(record=>{
+    if(record){
+      record.update(req.body).then(saved=>{
+        res.json({success:true, data:saved});
       }).catch(error=>{
         res.status(400).send(error);
       });
@@ -69,12 +58,18 @@ exports.update = (req, res)=>{
 };
 
 exports.delete = (req, res)=>{
-  Photos.destroy({
+  Model.destroy({
      where:{id: req.params.id}
   }).then(deleted=>{
     if(deleted){
-        Uploader.setLocation("photos");
-        Uploader.delete(req,res); 
+        if(req.params.image){
+            try{
+                let src = LOCATION + "/" + req.params.image;
+                fs.unlinkSync(src);
+            }catch(err){
+                console.log(err);
+            }
+        }
     }
     res.json({success:true, data:true});
   }).catch(error=>{

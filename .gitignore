@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 jwt
-hs
+hs.js
 # local env files
 .env
 .env.local

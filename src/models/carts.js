@@ -52,6 +52,10 @@ module.exports = (sequelize, DataTypes)=>{
       type: DataTypes.STRING,
       allowNull: true,
       unique: false
+    },
+    amount: {
+        type: DataTypes.INTEGER,
+        allowNull:true
     }
   })
 }

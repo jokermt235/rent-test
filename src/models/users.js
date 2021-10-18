@@ -5,6 +5,12 @@ module.exports = (sequelize, DataTypes)=>{
       autoIncrement: true,
       primaryKey: true
     },
+    planId: {
+      type: DataTypes.INTEGER,
+    },
+    discountId: {
+      type: DataTypes.INTEGER,
+    },
     fullname: {
       type: DataTypes.STRING,
       allowNull: false,

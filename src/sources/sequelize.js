@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
   config.parsed.MYSQL_USER,
   config.parsed.MYSQL_PASSWORD,
   {
-    "dialect":"mysql",
+    "dialect":"postgres",
     "host": config.parsed.HOST
   }
 );
